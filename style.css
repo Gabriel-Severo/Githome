@@ -4,8 +4,13 @@
     box-sizing: border-box;
 }
 
+body {
+    background-color: #f1f1f1;
+}
+
 header {
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    background-color: #fff;
 }
 
 header .container {
@@ -41,4 +46,33 @@ header .menu a {
     color: white;
     padding: 10px;
     background: #000;
+}
+
+main {
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+main form {
+    display: flex;
+    flex-direction: column;
+}
+
+main form input {
+    border: 1px solid #000;
+    border-radius: 2px;
+    width: 300px;
+    height: 30px;
+}
+
+main form button {
+    background: #000;
+    width: 100px;
+    height: 30px;
+    margin: 5px auto;
+    border-radius: 3px;
+    color: #fff;
 }

@@ -22,6 +22,7 @@ server.get("/repositorios", async(req, res) => {
         userInfo = await axios.get(`https://api.github.com/users/${req.query.usuario}`).then(response => response.data)
         repositories = await axios.get(`https://api.github.com/users/${req.query.usuario}/repos`).then(response => response.data)
     }catch(e){
+        console.log(e)
         return res.render("notfound.html", {usuario: req.query.usuario});
     }
     return res.render("repositorios.html", {userInfo, repositories})

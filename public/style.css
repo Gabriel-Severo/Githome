@@ -132,3 +132,22 @@ header .menu a {
 .user .user-repositories .repositories ul li a:hover {
     text-decoration: underline;
 }
+
+/* NOTFOUND */
+.usernotfound {
+    width: 100%;
+    height: calc(100vh - 38px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.usernotfound span {
+    font-size: 2rem;
+}
+
+.usernotfound img {
+    width: 100px;
+    height: 100px;
+}

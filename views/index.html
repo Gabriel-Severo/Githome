@@ -7,25 +7,11 @@
     <title>Githome</title>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <div class="logo">
-                <a href="index.html"><img src="img/logo.png" alt="Logo"></a>
-            </div>
-            <div class="menu">
-                <ul>
-                    <li>
-                        <a href="#">Ínicio</a></li>
-                    <li>
-                        <a href="favoritos.html">Favoritos</a></li>
-                </ul>
-            </div>
-        </div>
-    </header>
+    {% include "menu.html" %}
     <main class="inicio">
         <h2>Busque por um usuário no github</h2>
         <section class="formulario">
-            <form action="/repositorios.html" method="GET">
+            <form action="/repositorios" method="GET">
                 <input type="text" name="usuario" id="usuario" placeholder="Nome">
                 <button type="submit">Buscar</button>
             </form>

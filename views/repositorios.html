@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Repositórios</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    {% include "menu.html" %}
+    <main class="user">
+        <section class="user-info">
+            <div class="user-img">
+                <img src="{{userInfo.avatar_url}}" alt="Imagem do usuário">
+            </div>
+            <div class="user-infos">
+                <strong class="user-name">{{userInfo.name}}</strong>
+                <p class="user-tag">{{userInfo.login}}</p>
+                <p>Repositórios: {{repositories.length}}</p>
+            </div>
+        </section>
+        <section class="user-repositories">
+            <h2>Repositórios de {{userInfo.login}}</h2>
+            <div class="repositories">
+                <ul>
+                    {% for repository in repositories %}
+                    <li>
+                        <a href="{{repository.html_url}}" target="__blank">{{repository.name}}</a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

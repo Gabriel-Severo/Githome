@@ -1,12 +1,12 @@
 const express = require('express')
 const server = express()
 const axios = require('axios')
+const db = require('./db')
 
 server.use(express.static("public"))
 server.use(express.urlencoded({extended: true}))
 
 const nunjucks = require('nunjucks')
-const { default: Axios } = require('axios')
 nunjucks.configure("views", {
     express: server,
     noCache: true
@@ -27,6 +27,8 @@ server.get("/repositorios", async(req, res) => {
     }
     return res.render("repositorios.html", {userInfo, repositories})
 })
+
+
 
 server.listen(3000, () => {
     console.log("Servidor iniciado")

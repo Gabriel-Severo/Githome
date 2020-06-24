@@ -25,7 +25,29 @@ server.get("/repositorios", async(req, res) => {
         console.log(e)
         return res.render("notfound.html", {usuario: req.query.usuario});
     }
-    return res.render("repositorios.html", {userInfo, repositories})
+    let linguagens = {}
+
+    // Obtem a linguagem mais usada pelo usuário
+    repositories.forEach(repository => {
+        if(repository.language == null)
+            return;
+        if(linguagens[repository.language]){
+            linguagens[repository.language] += 1
+        }else{
+            linguagens[repository.language] = 1
+        }
+    })
+    const linguagemUsada = Object.keys(linguagens).sort((a, b) => {
+        if(linguagens[a] < linguagens[b]){
+            return 1
+        }
+        if(linguagens[a] > linguagens[b]){
+            return -1
+        }
+        return 0
+    })[0]
+    
+    return res.render("repositorios.html", {userInfo, repositories, linguagemUsada})
 })
 
 

@@ -60,26 +60,23 @@ server.get('/favoritos', (req, res) => {
 })
 
 server.get('/like', async(req, res) => {
-    let userInfo
-    try{
-        userInfo = await axios.get(`https://api.github.com/users/${req.query.usuario}`).then(response => response.data)
-    }catch(e){
-        return res.render("notfound.html", {usuario: req.query.usuario});
-    }
     const {usuario, linguagem, imagem} = req.query
     const values = [imagem, usuario, linguagem]
-    db.all(`SELECT * FROM favorito WHERE name = ${usuario}`, (err, rows) => {
+    db.all(`SELECT * FROM favorito WHERE name = '${usuario}'`, (err, rows) => {
         if(err){
             console.log(err)
         }
-        console.log(rows)
-    })
-    db.run('INSERT INTO favorito(image, name, language) VALUES(?,?,?)', values, (err) => {
-        if(err){
-            return res.send('Erro no banco de dados')
+        if(rows.length != 0){
+            db.run(`DELETE FROM favorito WHERE name = '${usuario}'`)
+        }else{
+            db.run('INSERT INTO favorito(image, name, language) VALUES(?,?,?)', values, (err) => {
+                if(err){
+                    return res.send('Erro no banco de dados')
+                }
+            })
         }
-        return res.redirect('/repositorios?usuario=' + req.query.usuario)
     })
+    return res.redirect('/repositorios?usuario=' + usuario)
 })
 
 server.listen(3000, () => {

@@ -50,7 +50,9 @@ server.get("/repositorios", async(req, res) => {
     return res.render("repositorios.html", {userInfo, repositories, linguagemUsada})
 })
 
-
+server.get('/favoritos', (req, res) => {
+    return res.render('favoritos.html')
+})
 
 server.listen(3000, () => {
     console.log("Servidor iniciado")

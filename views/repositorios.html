@@ -11,15 +11,17 @@
     {% include "menu.html" %}
     <main class="user">
         <section class="user-info">
+            <button class="estrela" onclick="like()">
+                <i class="far fa-star"></i>
+            </button>
             <div class="user-img">
-
-                <img src="{{userInfo.avatar_url}}" alt="Imagem do usuário">
+                <img class="img" src="{{userInfo.avatar_url}}" alt="Imagem do usuário">
             </div>
             <div class="user-infos">
                 <strong class="user-name">{{userInfo.name}}</strong>
                 <p class="user-tag">{{userInfo.login}}</p>
                 <p>Repositórios: {{userInfo.public_repos}}</p>
-                <p>Linguagem mais usada: {{linguagemUsada}}</p>
+                <p class="linguagem">Linguagem mais usada: {{linguagemUsada}}</p>
             </div>
         </section>
         <section class="user-repositories">
@@ -35,5 +37,6 @@
             </div>
         </section>
     </main>
+    <script src="script.js"></script>
 </body>
 </html>

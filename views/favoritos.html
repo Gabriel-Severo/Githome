@@ -9,28 +9,19 @@
 <body>
     {% include "menu.html" %}
     <main class="favoritos">
+        {% for favorito in favoritos %}
         <div class="favorito">
             <div class="favorito-img">
-                <img src="https://avatars3.githubusercontent.com/u/24649983?v=4" alt="Imagem do usuário">
+                <img src="{{favorito.imagem}}" alt="Imagem do usuário">
             </div>
             <div class="favorito-nome">
-                Gabriel-Severo
+                {{favorito.name}}
             </div>
             <div class="favorito-linguagem">
-                Linguagem mais usada: Javascript
+                {{favorito.language}}
             </div>
         </div>
-        <div class="favorito">
-            <div class="favorito-img">
-                <img src="https://avatars3.githubusercontent.com/u/24649983?v=4" alt="Imagem do usuário">
-            </div>
-            <div class="favorito-nome">
-                Gabriel-Severo
-            </div>
-            <div class="favorito-linguagem">
-                Linguagem mais usada: Javascript
-            </div>
-        </div>
+        {% endfor %}
     </main>
 </body>
 </html>

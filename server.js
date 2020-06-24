@@ -12,6 +12,7 @@ nunjucks.configure("views", {
     noCache: true
 })
 
+
 server.get("/", (req, res) => {
     return res.render("index.html")
 })
@@ -22,7 +23,6 @@ server.get("/repositorios", async(req, res) => {
         userInfo = await axios.get(`https://api.github.com/users/${req.query.usuario}`).then(response => response.data)
         repositories = await axios.get(`https://api.github.com/users/${req.query.usuario}/repos`).then(response => response.data)
     }catch(e){
-        console.log(e)
         return res.render("notfound.html", {usuario: req.query.usuario});
     }
     let linguagens = {}
@@ -51,7 +51,35 @@ server.get("/repositorios", async(req, res) => {
 })
 
 server.get('/favoritos', (req, res) => {
-    return res.render('favoritos.html')
+    db.all('SELECT * FROM favorito', (err, favoritos) => {
+        if(err){
+            res.send('Erro ao buscar os dados')
+        }
+        return res.render('favoritos.html', {favoritos})
+    })
+})
+
+server.get('/like', async(req, res) => {
+    let userInfo
+    try{
+        userInfo = await axios.get(`https://api.github.com/users/${req.query.usuario}`).then(response => response.data)
+    }catch(e){
+        return res.render("notfound.html", {usuario: req.query.usuario});
+    }
+    const {usuario, linguagem, imagem} = req.query
+    const values = [imagem, usuario, linguagem]
+    db.all(`SELECT * FROM favorito WHERE name = ${usuario}`, (err, rows) => {
+        if(err){
+            console.log(err)
+        }
+        console.log(rows)
+    })
+    db.run('INSERT INTO favorito(image, name, language) VALUES(?,?,?)', values, (err) => {
+        if(err){
+            return res.send('Erro no banco de dados')
+        }
+        return res.redirect('/repositorios?usuario=' + req.query.usuario)
+    })
 })
 
 server.listen(3000, () => {

@@ -3,7 +3,6 @@ const db = new sqlite3.Database('./ws.db')
 
 db.serialize(() => {
     db.run(`CREATE TABLE IF NOT EXISTS favorito(
-            id INTEGER PRIMARY KEY,
             image TEXT,
             name TEXT,
             language TEXT

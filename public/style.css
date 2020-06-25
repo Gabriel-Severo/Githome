@@ -106,8 +106,11 @@ header .menu a {
     right: 0;
     font-size: 1.4em;
     background: none;
-    color: #dddd00;
     cursor: pointer;
+}
+
+.user .user-info .liked {
+    color: #dddd00;
 }
 
 .user .user-info .user-img img {

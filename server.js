@@ -46,8 +46,18 @@ server.get("/repositorios", async(req, res) => {
         }
         return 0
     })[0]
+
+    let liked = "estrela"
+    await db.all(`SELECT * FROM favorito WHERE name = '${req.query.usuario}'`, (err, rows) => {
+        if(err){
+            console.log(err)
+        }
+        if(rows.length != 0){
+            liked = "estrela liked"
+        }
+        res.render("repositorios.html", {userInfo, repositories, linguagemUsada, liked})
+    })
     
-    return res.render("repositorios.html", {userInfo, repositories, linguagemUsada})
 })
 
 server.get('/favoritos', (req, res) => {

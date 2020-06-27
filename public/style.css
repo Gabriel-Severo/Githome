@@ -41,8 +41,7 @@ header .menu ul {
 }
 
 header .menu ul li {
-    margin-left: 10px;
-    width: 40px;
+    width: 50px;
 }
 
 header .menu a {
@@ -211,4 +210,36 @@ header .menu a {
 
 .favoritos .favorito .favorito-linguagem {
     grid-area: c;
+}
+
+@media (max-width: 960px){
+    header .menu a {
+        padding: 8px;
+    }
+    header .container {
+        width: 80%;
+    }
+    .user .user-info {
+        margin: 0;
+        height: 450px;
+    }
+    .user .user-info .user-img {
+        width: calc(100vw-40px);
+        height: calc(100vh-40px);
+    }
+    .user {
+        flex-direction: column;
+    }
+    .user .user-repositories .repositories ul {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .favoritos {
+        grid-template-columns: 1fr;
+    }
+    .favoritos .favorito {
+        width: auto;
+    }
+    .usernotfound span {
+        text-align: center;
+    }
 }

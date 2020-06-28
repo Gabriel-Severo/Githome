@@ -220,18 +220,22 @@ header .menu a {
         width: 80%;
     }
     .user .user-info {
-        margin: 0;
-        height: 450px;
+        margin: 10px;
+        height: 480px;
     }
     .user .user-info .user-img {
-        width: calc(100vw-40px);
-        height: calc(100vh-40px);
+        width: 100%;
+        height: 400px;
     }
     .user {
         flex-direction: column;
     }
+    .user .user-repositories {
+        margin-bottom: 20px;
+    }
     .user .user-repositories .repositories ul {
         grid-template-columns: repeat(2, 1fr);
+        grid-auto-rows: 10px;
     }
     .favoritos {
         grid-template-columns: 1fr;

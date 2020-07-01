@@ -5,10 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Favoritos</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 </head>
 <body>
     {% include "menu.html" %}
     <main class="favoritos">
+        {% if favoritos.length == 0 %}
+            <span class="semfavoritos">Você não tem favoritos</span>
+        {% endif %}
         {% for favorito in favoritos %}
         <div class="favorito">
             <div class="favorito-img">

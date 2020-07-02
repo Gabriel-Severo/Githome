@@ -38,18 +38,26 @@ header .logo img {
 header .menu ul {
     display: flex;
     list-style: none;
-    margin-top: 10px;
+    height: 100%;
 }
 
 header .menu ul li {
-    width: 50px;
+    width: 100px;
+    height: 100%;
+    background: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+header .menu ul li:hover {
+    background: #000c;
 }
 
 header .menu a {
-    text-decoration: none;
     color: white;
-    padding: 10px;
-    background: #000;
+    text-decoration: none;
 }
 
 /* INDEX */
@@ -138,6 +146,7 @@ header .menu a {
     grid-auto-rows: 0;
     list-style: none;
     padding: 0;
+    grid-auto-columns: 100px;
 }
 
 .user .user-repositories .repositories ul li a {
@@ -222,7 +231,7 @@ header .menu a {
         padding: 8px;
     }
     header .container {
-        width: 80%;
+        width: 100%;
     }
     .user .user-info {
         margin: 10px;
